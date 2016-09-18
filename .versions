@@ -1,0 +1,12 @@
+arboleya:electrify@2.1.4
+babel-compiler@6.9.0
+babel-runtime@0.1.10
+base64@1.0.9
+check@1.2.3
+ecmascript@0.5.7
+ecmascript-runtime@0.3.12
+ejson@1.0.12
+meteor@1.2.16
+promise@0.8.3
+random@1.0.10
+underscore@1.0.9

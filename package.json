@@ -1,0 +1,108 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "electrify-updated-test",
+        "scope": null,
+        "escapedName": "electrify-updated-test",
+        "name": "electrify-updated-test",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      ""
+    ]
+  ],
+  "_from": "electrify-updated-test@latest",
+  "_id": "electrify-updated-test@2.1.8",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/electrify-updated-test",
+  "_nodeVersion": "6.3.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/electrify-updated-test-2.1.8.tgz_1473933946617_0.6075121134053916"
+  },
+  "_npmUser": {
+    "name": "unforgiven",
+    "email": "Unforgiven-wanda@hotmail.fr"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "electrify-updated-test",
+    "scope": null,
+    "escapedName": "electrify-updated-test",
+    "name": "electrify-updated-test",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/electrify-updated-test/-/electrify-updated-test-2.1.8.tgz",
+  "_shasum": "229799f7d28dcf9dc334562a25d939605fe38bdc",
+  "_shrinkwrap": null,
+  "_spec": "electrify-updated-test",
+  "_where": "",
+  "author": {
+    "name": "Anderson Arboleya",
+    "email": "anderson@arboleya.me"
+  },
+  "bin": {
+    "electrify": "bin/cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/arboleya/electrify/issues"
+  },
+  "dependencies": {
+    "commander": "^2.8.1",
+    "dotenv": "^2.0.0",
+    "electron-packager": "^8.0.0",
+    "electron-prebuilt": "^1.4.0",
+    "lodash": "^4.13.1",
+    "server-destroy": "^1.0.1",
+    "shelljs": "^0.7.0",
+    "sockjs": "^0.3.15"
+  },
+  "description": "Package your Meteor apps with Electron, and butter.",
+  "devDependencies": {
+    "codeclimate-test-reporter": "^0.3.3",
+    "istanbul": "^0.4.1",
+    "mocha": "^3.0.1",
+    "npm-check": "^5.2.2",
+    "should": "^11.1.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "229799f7d28dcf9dc334562a25d939605fe38bdc",
+    "tarball": "https://registry.npmjs.org/electrify-updated-test/-/electrify-updated-test-2.1.8.tgz"
+  },
+  "engines": {
+    "node": ">=0.10.36"
+  },
+  "homepage": "https://github.com/Unforgiven-wanda/electrify-updated-test",
+  "keywords": [
+    "electron",
+    "meteor",
+    "packager",
+    "desktop"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "maintainers": [
+    {
+      "name": "unforgiven",
+      "email": "Unforgiven-wanda@hotmail.fr"
+    }
+  ],
+  "name": "electrify-updated-test",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unforgiven-wanda/electrify-updated-test.git"
+  },
+  "scripts": {},
+  "version": "2.1.10"
+}
