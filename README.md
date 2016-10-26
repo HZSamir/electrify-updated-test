@@ -1,19 +1,37 @@
-# Electrify [![windows](https://img.shields.io/appveyor/ci/arboleya/electrify.svg?label=windows)](https://ci.appveyor.com/project/arboleya/electrify) [![travis](https://img.shields.io/travis/arboleya/electrify/master.svg?label=osx/linux)](https://travis-ci.org/arboleya/electrify) [![coverage](https://img.shields.io/codeclimate/coverage/github/arboleya/electrify.svg)](https://codeclimate.com/github/arboleya/electrify/coverage) [![join the chat at https://gitter.im/arboleya/electrify](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/arboleya/electrify)
+# Electrify-updated-test
 
 Easily package your Meteor apps with Electron, and *butter*.
-
-`npm install electrify-updated-test`
 
 ## Updated version notes:
 This updated version of Electrify now defaults to Electron 1.4.0. When requiring Electrify, use `require('electrify-updated-test')`
 Also the developpement mode now uses 1.4.0 as well.
 Other than that there are a few tweaks here and there. Nothing major.
 
-And if anyone is interested, I think ASAR support should be the next thing we should work on for this package. It would require some writing from the ground-up just so you know, given that this package relies on spawning mongo and node, and ASAR does not support that. If anyone's up to it, let me know. 
+And if anyone is interested, I think ASAR support should be the next thing we should work on for this package. It would require some writing from the ground-up just so you know, given that this package relies on spawning mongo and node, and ASAR does not support that. If anyone's up to it, let me know.
 
-This package **belongs to its original author Anderson Arboleya**. Check [Electrify](https://github.com/arboleya/electrify). The purpose of this fork is simply to keep it up to date and resolve some issues that keep cropping up as Electron and Meteor keep receiving new features.
+This package **belongs to its original author Anderson Arboleya**. Check [Meteor x Electron integration](https://github.com/arboleya/electrify). The purpose of this fork is simply to keep it up to date and resolve some issues that keep cropping up as Electron and Meteor keep receiving new features.
 
-## TL;DR
+## Tweaking
+Now, Electrify runs a self-contained MongoDB server. Running the app with `electrify` will run fine. However, once you package the app and run it, you might run into a MongoDB driver issue, something like
+```
+ The default storage engine 'wiredTiger' is not available with this build of mongod. Please specify a different storage engine explicitly, e.g. --storageEngine=mmapv1
+```
+causing the app not to start; That is because Electrify natively uses an older version of MongoDB than the one it bundles with your app (in fact, it copies the executables directly from your `.meteor` folder).
+
+How to fix
+----------
+
+Refer to [this issue](https://github.com/arboleya/electrify/issues/61#issuecomment-238031131). Long story short,  you must have an older version `mongo.exe` and `mongod.exe` (or executables, in the case of Linux) in your .electrify/bin folder before you package. You can find the link to those in the above link. Otherwise, if your app is already packaged, copy them to your/app/path/.../resources/app/bin. The first method just ensures that future packaging will not run into this issue each time.
+
+Some more Tweaking
+------------------
+
+This case assumes you want to specify a distant MongoDB for your app (or change entirely to something like CouchDB). Now Electrify does not natively support that, and *will ignore* a `MONGO_URL` environnement variable if you pass one. Now to fix this, you need to modify this line: `'self.env.MONGO_URL = 'mongodb://localhost:'+ self.port +'/meteor';` to: `self.env.MONGO_URL = process.env.MONGO_URL;` in the `lib/plugins/mongodb.js` file
+
+You can either modify this file in your global packages folder for this modification to be effective in all future projets. (see `npm root -g`), or inside your packaged app, `my-electrified-app/resources/app/node_modules/electrify-updated-test/lib/plugins/mongodb.js`
+
+
+## TL;DR (Old docs, still useful)
 
 ````shell
 npm install -g electrify
@@ -190,7 +208,7 @@ app.on('ready', function() {
     // >>> your configs here
   });
   splash.loadUrl('./splash.html'); // create the ".electrify/splash.html" file
-  
+
   // then move along and start electrify
   electrify.start(function(meteor_root_url) {
 
@@ -241,10 +259,10 @@ Electrify.call('hello.world', ['anderson', 'arboleya'], function(err, msg) {
 ````
 
 > **IMPORTANT**
-> 
+>
 > You can only call methods after the connection is made between Meteor and
 > Electron, to make sure it's ready you can wrap your code in a startup block:
-> 
+>
 > ````javascript
 > Electrify.startup(function(){
 >   Electrify.call(...);
